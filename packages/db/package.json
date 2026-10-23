@@ -1,0 +1,25 @@
+{
+  "name": "@screensy/db",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "exports": {
+    "." : "./index.ts"
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+
+  "dependencies": {
+    "@prisma/client": "6",
+    "dotenv": "^18.0.9",
+    "prisma": "6"
+  }
+}
