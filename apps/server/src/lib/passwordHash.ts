@@ -7,3 +7,7 @@ return hash
 }
 
 
+export async function verifyPassword(password: string, hashPassword : string){
+    const hash = await bcrypt.compare(password , hashPassword)
+    return hash
+}
