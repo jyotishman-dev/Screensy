@@ -22,5 +22,51 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  wallpapers  Wallpaper[]
+  recordings  Recording[]
+}
+
+
+model Wallpaper {
+  id String @id @default(cuid())
+  name String
+  url String 
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+
+  ownerId String?
+  owner User?  @relation(references: [id], fields: [ownerId], onDelete:Cascade)
+
+  recordings  Recording[]
+
+  @@index([ownerId])
 
 }
+
+
+model Recording {
+  id String  @id @default(cuid())
+  title String
+  duration Int
+  createdAt DateTime @default(now())
+
+  ownerId String  
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  wallpaperId String?
+  wallpaper Wallpaper? @relation(fields: [wallpaperId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
+}
+
+
+model TrialAttempt {
+  id String  @id @default(cuid())
+
+  deviceId  String 
+  createdAt DateTime @default(now())
+
+  @@index([deviceId])
+}
+

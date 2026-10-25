@@ -1,24 +1,10 @@
-import cors from "cors"
+import { app } from "./src/app";
 
-import express , {type Express} from "express"
-
-
-
-export const app : Express = express()
+const PORT = 4001;
 
 
-app.use(cors())
 
 
-app.use(express.json())
-
-app.get("/health", (_req , res) => {
-    res.json({
-        ok : true
-    })
+app.listen(PORT , ()=>{
+    console.log(`App listen on PORT ${PORT}`)
 })
-
-
-app.use("/api/v1/wallpapers" , )
-
-app.use("/api/v1/try")

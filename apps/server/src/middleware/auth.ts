@@ -21,7 +21,7 @@ declare global {
 
 export async function  requireAuth(req: Request ,  res : Response  , next : NextFunction) {
     const header = req.headers.authorization;
-    const token = header?.startsWith("Bearer")?header.slice("Bearer".length) : undefined
+    const token = header?.startsWith("Bearer ") ? header.slice("Bearer ".length).trim() : undefined
 
     if (!token) {
     res.status(401).json({ error: "Missing Authorization bearer token" });

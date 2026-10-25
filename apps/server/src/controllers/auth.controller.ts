@@ -6,7 +6,7 @@ import { signAuthToken } from "../lib/jwt"
 
 
 
-export const  signup =async(req : Request , res : Response) =>{
+export const  SignupController =async(req : Request , res : Response) =>{
 
     const parsed = signupSchema.safeParse(req.body)
 
@@ -22,9 +22,9 @@ export const  signup =async(req : Request , res : Response) =>{
         where : {email}
     })
 
-    if (!existing) {
-        res.status(409).json({error : "An account with this email is already there"})
-        return;
+    if (existing) {
+        return res.status(409).json({error : "An account with this email is already there"})
+       
     }
 
     const passwordHash = await hashPassword(password)
@@ -40,10 +40,10 @@ export const  signup =async(req : Request , res : Response) =>{
 
 }
 
-export const   login = async (req : Request , res : Response) =>{
+export const   LoginController = async (req : Request , res : Response) =>{
     const parsed = loginSchema.safeParse(req.body);
 
-    if(!parsed.data) {
+    if(!parsed.success) {
         return res.status(400).json({error : parsed.error.issues[0]?.message ?? "invalid input"})
     }
 
@@ -72,7 +72,7 @@ export const   login = async (req : Request , res : Response) =>{
 
 
 
-export const logout = async (req : Request , res : Response) => {
+export const LogoutController = async (req : Request , res : Response) => {
     res.status(200).json({message  : "Logged Out"})
 }
 
