@@ -11,7 +11,7 @@ export const  recordingRouter :  Router = Router();
 
 recordingRouter.get('/', requireAuth ,getAllRecordings)
 recordingRouter.post('/',  requireAuth, createRecording)
-recordingRouter.get('/:id', getRecordingById)
+recordingRouter.get('/:id',requireAuth ,  getRecordingById)
 
 recordingRouter.delete("/:id", requireAuth ,deleteRecording)
 
