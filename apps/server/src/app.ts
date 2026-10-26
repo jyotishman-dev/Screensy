@@ -22,5 +22,5 @@ app.get("/health", (_req , res) => {
 })
 
 app.use("/api/v1",authRouter)
-//  app.use("/api/v1/recordings", recordingRouter);
+  app.use("/api/v1/recordings", recordingRouter);
 app.use("/api/v1/wallpapers", wallpapersRouter);
