@@ -7,9 +7,7 @@ export const getWallpapers = async () => {
 
     const response = await fetch(`${API_URL}/wallpapers`, {
         method: "GET",
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+      
     })
 
     const data = await response.json()
@@ -34,7 +32,7 @@ export const createWallpaper = async (
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
+    
         },
         body: JSON.stringify({
             title,
@@ -59,9 +57,7 @@ export const deleteWallpaper = async (id: string) => {
 
     const response = await fetch(`${API_URL}/wallpapers/${id}`, {
         method: "DELETE",
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+       
     })
 
     const data = await response.json()
